@@ -12,7 +12,7 @@ plugins that offer Markdown alternatives. It should even work if applied to regu
 
 ###With composer###
 
-    php composer.phar require infostreams/pagelistSnippet
+    php composer.phar require infostreams/pagelist-snippet
 
 ###Download###
 
