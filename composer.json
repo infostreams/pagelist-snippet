@@ -1,0 +1,20 @@
+{
+    "name": "infostreams/pagelistSnippet",
+    "type": "phile-plugin",
+    "license": "MIT",
+    "description": "A PhileCMS plugin that allows you to list or search pages on your site.",
+    "keywords": ["search", "page", "pagelist", "cms", "phile", "philecms", "snippets", "markdown"],
+    "authors": [
+        {
+            "name": "Edward Akerboom",
+            "email": "github@infostreams.net",
+            "homepage": "https://www.infostreams.net/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "phile-cms/phile": ">=1",
+        "phile-cms/plugin-installer-plugin": ">=1",
+        "infostreams/snippets": ">=1.1"
+    }
+}

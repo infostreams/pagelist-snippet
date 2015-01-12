@@ -1,0 +1,10 @@
+<ul>
+  {% for p in pagelist %}
+  <li>
+    <a href="{{base_url}}/{{p.url}}">
+      <strong>{{p.title}}</strong>
+      <span>{{p.meta.description}}</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
