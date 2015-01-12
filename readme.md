@@ -22,7 +22,7 @@ plugins that offer Markdown alternatives. It should even work if applied to regu
 
 ###Activation###
 
-After you have installed the plugin. You need to add the following line to your config.php file:
+After you have installed the plugin, you need to add the following line to your config.php file:
 
     $config['plugins']['infostreams\\pagelistSnippet'] = array('active' => true);
 
