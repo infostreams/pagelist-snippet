@@ -1,5 +1,5 @@
 {
-    "name": "infostreams/pagelistSnippet",
+    "name": "infostreams/pagelist-snippet",
     "type": "phile-plugin",
     "license": "MIT",
     "description": "A PhileCMS plugin that allows you to list or search pages on your site.",
