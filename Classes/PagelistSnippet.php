@@ -74,7 +74,7 @@ class PagelistSnippet extends \Phile\Plugin\Infostreams\Snippets\Snippets {
 			}
 		}
 
-		if (!is_null($filter)) {
+		if (!is_null($filter) && is_array($filter)) {
 			// apply filter to filter by meta tag
 			$filter_count = count($filter);
 			foreach ($list as $i => $p) {
