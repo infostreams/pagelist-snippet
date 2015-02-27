@@ -57,6 +57,7 @@ class PagelistSnippet extends \Phile\Plugin\Infostreams\Snippets\Snippets {
 					}
 					break;
 
+				case "search":
 				case "all":
 					$list = $all;
 					break;

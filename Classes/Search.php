@@ -4,16 +4,27 @@ namespace Phile\Plugin\Infostreams\PagelistSnippet;
 class Search {
 	protected $list = array();
 	protected $index = null;
+	protected static $renderDepth = 0;
 
 	public function __construct($list) {
 		$this->list = $list;
 
 		// extract document contents and create index
 		$documents = array();
-		foreach ($this->list as $i => $p) {
-			$content = $p->getContent();
-			$metadata = implode(" ", $p->getMeta()->getAll());
-			$documents[$i] = $content . " " . $metadata;
+
+		// prevent entering infinite recursion - this can happen when we render a page that
+		// contains a search result list, which would in turn try to render all pages,
+		// including one that has a search form... etc.
+		if (self::$renderDepth < 3) {
+			self::$renderDepth ++;
+
+			foreach ($this->list as $i => $p) {
+				$content = $p->getContent();
+				$metadata = implode(" ", $p->getMeta()->getAll());
+				$documents[$i] = $content . " " . $metadata;
+			}
+
+			self::$renderDepth --;
 		}
 
 		$this->index = $this->createIndex($documents);
