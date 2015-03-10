@@ -20,7 +20,14 @@ class Search {
 
 			foreach ($this->list as $i => $p) {
 				$content = $p->getContent();
-				$metadata = implode(" ", $p->getMeta()->getAll());
+				$tmpValues = $p->getMeta()->getAll();
+				$values = Array();
+				foreach ($tmpValues as $key => $value) {
+					if (is_string($value)) {
+						$values[$key] = $value;
+					}
+				}
+				$metadata = implode(" ", $values);
 				$documents[$i] = $content . " " . $metadata;
 			}
 
