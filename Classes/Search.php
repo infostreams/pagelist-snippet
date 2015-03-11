@@ -20,7 +20,8 @@ class Search {
 
 			foreach ($this->list as $i => $p) {
 				$content = $p->getContent();
-				$metadata = implode(" ", $p->getMeta()->getAll());
+				$metadata = $p->getMeta()->getAll();
+				$metadata = implode(" ", $this->flatten($metadata));
 				$documents[$i] = $content . " " . $metadata;
 			}
 
@@ -135,5 +136,10 @@ class Search {
 		$string = trim($string);
 
 		return $string;
+	}
+
+	protected function flatten($array) {
+		// flatten array to fix issue #3, see http://stackoverflow.com/a/1320259/426224
+		return iterator_to_array(new \RecursiveIteratorIterator(new \RecursiveArrayIterator($array)), false);
 	}
 }
