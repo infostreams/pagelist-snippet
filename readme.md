@@ -85,6 +85,10 @@ List all pages containing the text provided in the URL (by default, in the `q` p
 The search results are ordered by relevancy according to the
 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) metric.
 
+You can opt to search only a part of the site with the 'under' parameter:
+ 
+    (pagelist: search under: company/team)
+
 List all pages containing the text provided in the URL, but change the parameter name in which
 this is provided to 'search'
 

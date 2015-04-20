@@ -38,10 +38,18 @@ class PagelistSnippet extends \Phile\Plugin\Infostreams\Snippets\Snippets {
 			switch ($where) {
 				default:
 				case "below":
+				case "search":
 					$root = null;
 					if ($under) {
 						$p = new \Phile\Repository\Page();
 						$root = $p->findByPath($under);
+					}
+
+					// for 'search', we support providing an 'under' argument
+					if ($where == "search" && $root == null) {
+						// however, if it isn't provided, we default to searching all pages
+						$list = $all;
+						break;
 					}
 					if (!$root) {
 						$root = $this->currentPage;
@@ -57,7 +65,6 @@ class PagelistSnippet extends \Phile\Plugin\Infostreams\Snippets\Snippets {
 					}
 					break;
 
-				case "search":
 				case "all":
 					$list = $all;
 					break;
