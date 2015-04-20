@@ -73,7 +73,15 @@ class PagelistSnippet extends \Phile\Plugin\Infostreams\Snippets\Snippets {
 			// once we have obtained a base list of pages, we can search and filter
 			if ($where == "search") {
 				if (array_key_exists($param, $_GET)) {
+					// retrieve the keyword so we know what to search for,
 					$keyword = urldecode($_GET[$param]);
+					// ... and then remove it from the $_GET array to make sure
+					// that we don't run the search again if we come across a page
+					// that contains another (pagelist: search) snippet.
+					//
+					// This fixes https://github.com/infostreams/pagelist-snippet/issues/4
+					unset($_GET[$param]);
+
 					$search = new Search($list);
 					$list = $search->query($keyword);
 				} else {
