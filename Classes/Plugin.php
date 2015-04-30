@@ -2,12 +2,20 @@
 namespace Phile\Plugin\Infostreams\PagelistSnippet;
 
 class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\EventObserverInterface {
+	protected $events = [ // Register events (Phile >= 1.5)
+		'request_uri' => 'on',
+		'template_engine_registered' => 'on',
+		'plugins_loaded' => 'on'
+	];
 	public $pagelist_snippet = null;
 
 	public function __construct() {
-		\Phile\Event::registerEvent('request_uri', $this);
-		\Phile\Event::registerEvent('template_engine_registered', $this);
-		\Phile\Event::registerEvent('plugins_loaded', $this);
+		if (!class_exists('\Phile\Core\Event')) {
+			// Phile < 1.5 => register event
+			\Phile\Event::registerEvent('request_uri', $this);
+			\Phile\Event::registerEvent('template_engine_registered', $this);
+			\Phile\Event::registerEvent('plugins_loaded', $this);
+		}
 
 		$this->pagelist_snippet = new PagelistSnippet();
 	}
