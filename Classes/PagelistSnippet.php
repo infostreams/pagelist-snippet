@@ -27,6 +27,8 @@ class PagelistSnippet extends \Phile\Plugin\Infostreams\Snippets\Snippets {
 		if (is_array($where)) {
 			// user provided a list of pages
 			// - we obtain those from '$all' to make sure any provided sorting order is applied
+			$where = array_map('trim', $where);
+
 			foreach ($all as $p) {
 				if (in_array($p->getUrl(), $where)) {
 					$list[] = $p;
