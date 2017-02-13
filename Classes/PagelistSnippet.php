@@ -186,4 +186,8 @@ class DummyMeta {
 	public function get($k) {
 		return $this->template;
 	}
+	
+	public function getAll() {
+	return array();
+	}
 }
