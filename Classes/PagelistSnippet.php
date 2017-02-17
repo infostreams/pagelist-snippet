@@ -188,6 +188,6 @@ class DummyMeta {
 	}
 	
 	public function getAll() {
-	return array();
+		return array();
 	}
 }
