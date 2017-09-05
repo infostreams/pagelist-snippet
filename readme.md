@@ -1,4 +1,4 @@
-#Page list snippet#
+# Page list snippet
 
 A [PhileCMS](https://github.com/PhileCMS/Phile) plugin that allows you to list or search on pages
 on your site. You can make a list of all pages, of pages below the current or below a certain other
@@ -8,28 +8,29 @@ custom templates for your page list.
 This plugin works with the default Markdown parser, but it should also work with any of the other
 plugins that offer Markdown alternatives. It should even work if applied to regular HTML files.
 
-##Installation##
+## Installation
 
-###With composer###
+### With composer
 
     php composer.phar require infostreams/pagelist-snippet
 
-###Download###
+### Download
 
 * Install [Phile](https://github.com/PhileCMS/Phile)
 * Clone this repo into plugins/infostreams/pagelistSnippet
+* Install the [Snippets plugin](https://github.com/infostreams/snippets) as well
 
 
-###Activation###
+### Activation
 
-After you have installed the plugin, you need to add the following line to your config.php file:
+After you have installed the plugin and its dependencies, you need to add the following line to your config.php file:
 
     $config['plugins']['infostreams\\pagelistSnippet'] = array('active' => true);
 
 You need to have the [Snippets](https://github.com/infostreams/snippets) plugin installed and
 activated for this to work.
 
-##How it works##
+## How it works
 Once you have installed this plugin, you can include a list of pages anywhere in your site by
 typing the following code into your Markdown page:
 
@@ -37,7 +38,7 @@ typing the following code into your Markdown page:
 
 This would include a list of all pages on your site, using the default template.
 
-###Templates###
+### Templates
 Since the default template is rather bare bones, you probably want to provide your own template.
 
     (pagelist: all template:elements/pagelist)
@@ -53,17 +54,17 @@ If you want to override the default template, you can create a template called
 a fresh install of the PagelistSnippet plugin, and it can be used to provide a standardized list
 template for your whole site.
 
-##Available options##
+## Available options
 
 The first parameter can be either `all`, `below`, or `search`, or it can contain a named list of
 pages.
 
-###'all'###
+### 'all'
 List all the pages
 
     (pagelist: all)
 
-###'below'###
+### 'below'
 List all pages below the *current* page
 
     (pagelist: below)
@@ -77,7 +78,7 @@ List all pages below another page, and include that other page itself as well:
     (pagelist: below under: company/team inclusive:true)
 
 
-###'search'###
+### 'search'
 List all pages containing the text provided in the URL (by default, in the `q` parameter):
 
     (pagelist: search)
@@ -99,12 +100,12 @@ default `...?q=keyword`.
 
 Please be aware that the mentioned TF-IDF metric is relatively simple. This is not Google.
 
-###Named pages###
+### Named pages
 You can manually list the pages you want to include in your page list:
 
     (pagelist: [company/team/ceo, company/team/cto])
 
-##Filtering and sorting##
+## Filtering and sorting
 You can filter the page list based on information in the metadata. Filters are specified as an array,
 i.e. between [brackets], and support regular expressions by default.
 
@@ -140,7 +141,7 @@ You can hard code a full-text keyword search if you want to:
 
 This would list all pages that contain the keyword 'sales'.
 
-##Combining##
+## Combining
 You can combine almost all the parameters listed above:
 
     (pagelist: below
@@ -155,7 +156,7 @@ This would list all the pages below 'company/team' that have the 'helpdesk' tag 
 keyword 'europe', order them by surname and render them with the 'team-members.html' template.
 
 
-###Known limitations###
+### Known limitations
 I **suspect** that the current implementation only works with Twig templates. I haven't tested it
 with other templating plugins. If you managed to get it working with other plugins than Twig,
 drop me a line or open a pull request.
